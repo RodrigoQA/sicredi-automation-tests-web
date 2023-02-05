@@ -53,7 +53,7 @@ public class DriverFactory {
             case "HEADLESS_CHROME":
 
                 try {
-                   ChromeOptions chromeOptionsHeadless = new ChromeOptions();
+                    ChromeOptions chromeOptionsHeadless = new ChromeOptions();
                     chromeOptionsHeadless.addArguments("--headless");
                     chromeOptionsHeadless.addArguments("disable-gpu");
                     chromeOptionsHeadless.addArguments("window-size=1280x1024");
@@ -66,8 +66,7 @@ public class DriverFactory {
                 break;
             case "FIREFOX":
                 try {
-                    WebDriverManager.chromedriver().setup();
-//				DesiredCapabilities capabilitiesFirefox = DesiredCapabilities.firefox();
+                    WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
                     driver.manage().window().maximize();
                     log.info("Gecko Driver selecionado");
@@ -78,8 +77,9 @@ public class DriverFactory {
                 break;
             case "INTERNET_EXPLORER":
                 try {
-                    WebDriverManager.chromedriver().setup();
-                   // driver.manage().window().maximize();
+                    WebDriverManager.iedriver().setup();
+                    driver = new InternetExplorerDriver();
+                    driver.manage().window().maximize();
                     DesiredCapabilities capabilitiesIE = new  DesiredCapabilities();
                     capabilitiesIE.setCapability("requireWindowFocus", true);
                     capabilitiesIE.setCapability(InternetExplorerDriver.REQUIRE_WINDOW_FOCUS,true);
@@ -88,7 +88,6 @@ public class DriverFactory {
                     capabilitiesIE.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
                     capabilitiesIE.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
                     capabilitiesIE.setCapability(InternetExplorerDriver.FORCE_CREATE_PROCESS, true);
-                    driver = new InternetExplorerDriver();
                     log.info("Internet Explorer Driver selecionado");
 
                 } catch (Throwable e) {

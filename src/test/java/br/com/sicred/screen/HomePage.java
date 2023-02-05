@@ -15,6 +15,8 @@ public class HomePage {
 
     public By clienteTesteSicred = By.xpath( "//td[contains(.,'Teste Sicredi')]");
 
+    public By waitAlert = By.xpath("//*[contains(@class,'lert alert-success')]");
+
     public By selectVersao = By.id("switch-version-select");
 
     public By paginaInicial = By.id("gcrud-search-form");
@@ -39,5 +41,8 @@ public class HomePage {
 
     @FindBy (xpath = "(//button[contains(.,'Delete')])[2]")
     public WebElement btnConfirmarExclusao;
+
+    @FindBy(xpath = "(//*[contains(@class,'lert alert-success')]/span)[3]/p")
+    public WebElement msgDeleted;
 
 }

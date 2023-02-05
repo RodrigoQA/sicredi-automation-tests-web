@@ -55,8 +55,14 @@ public class HomeAction extends HomePage {
 
     }
 
-    public void confirmarExclusao() {
+    public HomeAction confirmarExclusao() {
       clicar(btnConfirmarExclusao);
+      return this;
 
+    }
+
+    public void validarMensagemExcluidoComSucesso(String mensagemExcluidoComSucesso) {
+        esperarElementAparecerTela(waitAlert);
+        assertThat(msgDeleted.getText(), is(mensagemExcluidoComSucesso));
     }
 }

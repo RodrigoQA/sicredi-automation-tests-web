@@ -25,11 +25,14 @@ public class DeletarClienteExistenteTest extends Setup {
                                 .habilitarCheckBoxDelete()
                                         .deletarCadastroCliente()
                                                 .validarAlertaParaConfirmarExclusao("Are you sure that you want to delete this 1 item?")
-                                                        .confirmarExclusao();
+                                                        .confirmarExclusao()
+                                                              .validarMensagemExcluidoComSucesso("Your data has been successfully deleted from the database.");
 
 
 
 
 
     }
+
+
 }

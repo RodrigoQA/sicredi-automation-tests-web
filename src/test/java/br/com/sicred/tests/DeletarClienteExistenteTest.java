@@ -5,6 +5,7 @@ import br.com.sicred.action.FormularioAction;
 import br.com.sicred.core.Setup;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 public class DeletarClienteExistenteTest extends Setup {
@@ -12,7 +13,7 @@ public class DeletarClienteExistenteTest extends Setup {
 
 
     @Test
-    @Tag("excluir-cliente")
+    @Tags(value = {@Tag("excluir-cliente"),@Tag("regressivo")})
     @DisplayName("Realizar a exclusão de um cliente já Cadastrado na plataforma")
     public void exclusaoDeClienteNaBaseDeDados(){
 

@@ -1,6 +1,5 @@
 package br.com.sicred.screen;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +11,9 @@ public class FormularioPage {
         PageFactory.initElements(driver, this);
     }
 
-    public By cadastradoComSucesso = By.id("report-success");
+
+    @FindBy(id = "report-success")
+    public WebElement cadastradoComSucesso;
 
     @FindBy(id = "field-customerName")
     public WebElement fieldNome;

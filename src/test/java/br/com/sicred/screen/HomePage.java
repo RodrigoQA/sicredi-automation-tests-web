@@ -1,6 +1,5 @@
 package br.com.sicred.screen;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,16 +12,21 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
-    public By clienteTesteSicred = By.xpath( "//td[contains(.,'Teste Sicredi')]");
 
-    public By waitAlert = By.xpath("//*[contains(@class,'lert alert-success')]");
-
-    public By selectVersao = By.id("switch-version-select");
-
-    public By paginaInicial = By.id("gcrud-search-form");
+    @FindBy(xpath = "//div[@class='floatL l5'][contains(.,'Customers')]")
+    public WebElement paginaInicial;
 
     @FindBy(xpath = "//a[contains(.,'Add Customer')]")
     public WebElement btnAddCustomer;
+
+    @FindBy(id = "switch-version-select")
+    public WebElement selectVersao;
+
+    @FindBy(xpath = "//*[contains(@class,'lert alert-success')]")
+    public WebElement waitAlertSucess;
+
+    @FindBy(xpath = "//td[contains(.,'Teste Sicredi')]")
+    public WebElement clienteTesteSicred;
 
     @FindBy (name = "customerName")
     public WebElement inputName;

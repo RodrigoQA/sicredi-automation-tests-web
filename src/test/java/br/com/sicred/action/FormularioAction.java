@@ -32,11 +32,10 @@ public class FormularioAction extends FormularioPage {
         return this;
 
     }
-        public FormularioAction validarMensagemDeDadosSalvosComSucesso(String mensagemEsperada){
+        public void validarMensagemDeDadosSalvosComSucesso(String mensagemEsperada){
         esperarElementAparecerTela(cadastradoComSucesso);
         Assert.assertTrue(msgSaveComSucesso.getText().contains(mensagemEsperada));
-        return this;
-    }
+        }
     public HomeAction voltarPaginaPrincipal(){
          BasePage.clicar(btnBackPage);
          return new HomeAction();

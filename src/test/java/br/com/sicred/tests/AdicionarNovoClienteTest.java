@@ -5,12 +5,13 @@ import br.com.sicred.action.HomeAction;
 import br.com.sicred.core.Setup;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 public class AdicionarNovoClienteTest extends Setup {
 
     @Test
-    @Tag("add-cliente")
+    @Tags(value = {@Tag("add-cliente"),@Tag("regressivo")})
     @DisplayName("Realizar a inclusão do cliente atraves do preenchimento do formulario")
     public void incluirNovoClienteNaBaseDeDados() {
         new HomeAction()

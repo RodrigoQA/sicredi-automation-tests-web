@@ -22,7 +22,7 @@ public class HomePage {
     @FindBy(id = "switch-version-select")
     public WebElement selectVersao;
 
-    @FindBy(xpath = "//*[contains(@class,'lert alert-success')]")
+    @FindBy(xpath = "//*[contains(@class,'lert alert-success') or contains(@class,'alert alert-success growl-animated')]")
     public WebElement waitAlertSucess;
 
     @FindBy(xpath = "//td[contains(.,'Teste Sicredi')]")

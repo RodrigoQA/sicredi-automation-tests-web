@@ -9,23 +9,26 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+
 public class DriverFactory {
 
     private static WebDriver driver;
-    private static Enum nomeNavegador ;
+    private static Enum nomeNavegador;
     public static Logger log = Logger.getLogger("QALogger");
 
 
     public static void openBrowser(Enum navegador, String URL) {
-         nomeNavegador = navegador;
+        nomeNavegador = navegador;
         getDriver().get(URL);
 
 
     }
+
     public static WebDriver getDriver() {
         if (driver == null) {
             // Inicia driver
@@ -37,7 +40,8 @@ public class DriverFactory {
 
     private static void createDriver() {
 
-        switch (nomeNavegador.name()) {
+        switch (setNavegador()) {
+
             case "GOOGLE_CHROME":
                 try {
                     WebDriverManager.chromedriver().setup();
@@ -47,7 +51,7 @@ public class DriverFactory {
                     driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                     log.info("Chrome Driver selecionado");
                 } catch (Throwable e) {
-                  log.info("ERRO: " + e.getMessage());
+                    log.info("ERRO: " + e.getMessage());
                 }
                 break;
             case "HEADLESS_CHROME":
@@ -61,7 +65,7 @@ public class DriverFactory {
                     driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
                     log.info("Chrome Headless Driver selecionado");
                 } catch (Throwable e) {
-                  log.info("ERRO: " + e.getMessage());
+                    log.info("ERRO: " + e.getMessage());
                 }
                 break;
             case "FIREFOX":
@@ -71,7 +75,7 @@ public class DriverFactory {
                     driver.manage().window().maximize();
                     log.info("Gecko Driver selecionado");
                 } catch (Throwable e) {
-                  log.info("ERRO: " + e.getMessage());
+                    log.info("ERRO: " + e.getMessage());
                 }
 
                 break;
@@ -80,19 +84,20 @@ public class DriverFactory {
                     WebDriverManager.iedriver().setup();
                     driver = new InternetExplorerDriver();
                     driver.manage().window().maximize();
-                    DesiredCapabilities capabilitiesIE = new  DesiredCapabilities();
+                    DesiredCapabilities capabilitiesIE = new DesiredCapabilities();
                     capabilitiesIE.setCapability("requireWindowFocus", true);
-                    capabilitiesIE.setCapability(InternetExplorerDriver.REQUIRE_WINDOW_FOCUS,true);
+                    capabilitiesIE.setCapability(InternetExplorerDriver.REQUIRE_WINDOW_FOCUS, true);
                     capabilitiesIE.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
                     capabilitiesIE.setCapability("ie.ensureCleanSession", true);
-                    capabilitiesIE.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+                    capabilitiesIE.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
                     capabilitiesIE.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
                     capabilitiesIE.setCapability(InternetExplorerDriver.FORCE_CREATE_PROCESS, true);
                     log.info("Internet Explorer Driver selecionado");
 
                 } catch (Throwable e) {
-                 log.info("ERRO: " + e.getMessage());
-                };
+                    log.info("ERRO: " + e.getMessage());
+                }
+                ;
 
             case "DRIVER_PHANTOM":
 
@@ -113,15 +118,32 @@ public class DriverFactory {
                     log.info("PhantomJS Driver selecionado");
 
                 } catch (Throwable e) {
-                  log.info("ERRO: " + e.getMessage());
-
+                    log.info("ERRO: " + e.getMessage());
 
                 }
+
+            default:
+                log.warning(">>>>>>> ATENÇÃO SEU NAVEGADOR NÃO ESTÁ DISPONÍVEL! <<<<<<<<<<");
         }
     }
 
-    // Finaliza driver
-    public static void killDriver () {
+    /**
+     * Definir navegador setup ou Property
+     */
+    private static String setNavegador() {
+
+        if (System.getProperty("Browser") != null) {
+            return System.getProperty("Browser");
+        } else {
+            return nomeNavegador.name();
+        }
+
+    }
+
+    /**
+     * Finaliza driver
+     */
+    public static void killDriver() {
 
         if (driver != null) {
             driver.quit();

@@ -12,8 +12,11 @@ public class Setup {
     public static void inicializarBrowser() {
         openBrowser(Navegadores.GOOGLE_CHROME,"https://www.grocerycrud.com/v1.x/demo/bootstrap_theme");
 
-       //Ex: Run Handless
-       // openBrowser(Navegadores.HEADLESS_CHROME,"https://www.grocerycrud.com/v1.x/demo/bootstrap_theme");
+       /**
+        *  Ex: Run Handless
+        *openBrowser(Navegadores.HEADLESS_CHROME,"https://www.grocerycrud.com/v1.x/demo/bootstrap_theme");
+
+       */
 
     }
 

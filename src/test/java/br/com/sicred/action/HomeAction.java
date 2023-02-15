@@ -62,7 +62,7 @@ public class HomeAction extends HomePage {
     }
 
     public void validarMensagemExcluidoComSucesso(String mensagemExcluidoComSucesso) {
-        BasePage.esperarElementAparecerTela(waitAlertSucess);
+        BasePage.esperarElementAparecerTela(msgDeleted);
         assertThat(msgDeleted.getText(), is(mensagemExcluidoComSucesso));
     }
 }

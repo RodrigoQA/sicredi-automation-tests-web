@@ -41,7 +41,7 @@ public class TearDown implements TestWatcher {
                 detalheErro =   " O elemento que recebe os eventos está ocultando";
                 break;
             case "AssertionError":
-                detalheErro =   "Ocorreu uma divergencia entre o resultado Experado x Obtido";
+                detalheErro =   "Ocorreu uma divergencia entre o resultado Esperado x Obtido";
                 break;
             default:
                detalheErro = throwable.getClass().getSimpleName();

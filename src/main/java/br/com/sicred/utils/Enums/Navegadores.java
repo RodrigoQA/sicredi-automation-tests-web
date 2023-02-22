@@ -2,11 +2,11 @@ package br.com.sicred.utils.Enums;
 
 public enum Navegadores{
 
-        GOOGLE_CHROME,
+        CHROME,
         INTERNET_EXPLORER,
         FIREFOX,
-        HEADLESS_CHROME,
-        PHANTOM;
+        HEADLESS,
+        PHANTOM
 
 
 }

@@ -3,11 +3,15 @@ package br.com.sicred.tests;
 import br.com.sicred.action.FormularioAction;
 import br.com.sicred.action.HomeAction;
 import br.com.sicred.core.Setup;
+import br.com.sicred.utils.TearDown;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
+
+@ExtendWith(TearDown.class)
 public class AdicionarNovoClienteTest extends Setup {
 
     @Test
@@ -24,4 +28,5 @@ public class AdicionarNovoClienteTest extends Setup {
 
 
     }
+
 }

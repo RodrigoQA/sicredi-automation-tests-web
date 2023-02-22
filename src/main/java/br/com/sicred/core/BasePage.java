@@ -7,23 +7,24 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-
 import java.time.Duration;
 import java.util.logging.Logger;
-
 import static br.com.sicred.core.DriverFactory.getDriver;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BasePage {
     public static Logger log = Logger.getLogger("QALogger");
 
-    public static void esperarElementAparecerTela(WebElement element){
+    public static void esperarElementAparecerTela(WebElement element,int segundos){
         Wait <WebDriver> wait = new FluentWait<>(getDriver())
-                .withTimeout(Duration.ofSeconds(10))
+                .withTimeout(Duration.ofSeconds(segundos))
                 .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(StaleElementReferenceException.class);
         wait.until(ExpectedConditions.visibilityOfAllElements(element));
-        log.info("Elemento: "+element+ " escontrado com sucesso");
+        log.info("Elemento: "+element+ " encontrado com sucesso!");
     }
 
     public static void escrever(WebElement el, String text){
@@ -37,6 +38,19 @@ public class BasePage {
         log.info("Elemento: "+el+" clicado com sucesso!");
 
     }
+
+   public static void validarSeTextoContainsString(WebElement texto_atual, String texto_esperado){
+       assertThat(texto_atual.getText(), containsString(texto_esperado));
+        log.info("Texto: "+texto_esperado+" validado com sucesso!");
+
+    }
+
+    public static void validarSeTextoEhExatamenteOMesmo(WebElement texto_atual, String texto_esperado){
+       assertThat(texto_atual.getText(), is(texto_esperado));
+        log.info("Texto: "+texto_esperado+" validado com sucesso!");
+
+    }
+
 
 
 }

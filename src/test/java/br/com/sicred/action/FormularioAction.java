@@ -2,9 +2,12 @@ package br.com.sicred.action;
 
 import br.com.sicred.core.BasePage;
 import br.com.sicred.screen.FormularioPage;
-import org.junit.Assert;
 import static br.com.sicred.core.BasePage.esperarElementAparecerTela;
+import static br.com.sicred.core.BasePage.validarSeTextoContainsString;
 import static br.com.sicred.core.DriverFactory.getDriver;
+import static br.com.sicred.utils.Relatorio.EvidenceReport.gerarRelatorio;
+
+
 
 public class FormularioAction extends FormularioPage {
 
@@ -27,14 +30,16 @@ public class FormularioAction extends FormularioPage {
         BasePage.clicar(comboEmpregadora);
         BasePage.clicar(fixter);
         BasePage.escrever(filedLimiteCredito,"200");
+        gerarRelatorio("Preencher Formulário","Preencher formulário com as informações do cliente");
         BasePage.clicar(btnSave);
 
         return this;
 
     }
         public void validarMensagemDeDadosSalvosComSucesso(String mensagemEsperada){
-        esperarElementAparecerTela(cadastradoComSucesso);
-        Assert.assertTrue(msgSaveComSucesso.getText().contains(mensagemEsperada));
+        esperarElementAparecerTela(cadastradoComSucesso,10);
+            gerarRelatorio("Cliente cadastrado","Validar mensagem cliente cadastrado com sucesso");
+            validarSeTextoContainsString(msgSaveComSucesso,mensagemEsperada);
         }
     public HomeAction voltarPaginaPrincipal(){
          BasePage.clicar(btnBackPage);

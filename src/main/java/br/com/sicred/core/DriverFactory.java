@@ -9,9 +9,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
+import java.time.Duration;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 
@@ -40,21 +39,25 @@ public class DriverFactory {
 
     private static void createDriver() {
 
-        switch (setNavegador()) {
+        /**
+         * Selecionar Browser
+         */
 
-            case "GOOGLE_CHROME":
+        switch (setBrowser()) {
+
+            case "CHROME":
                 try {
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--start-maximized");
                     driver = new ChromeDriver(chromeOptions);
-                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     log.info("Chrome Driver selecionado");
                 } catch (Throwable e) {
                     log.info("ERRO: " + e.getMessage());
                 }
                 break;
-            case "HEADLESS_CHROME":
+            case "HEADLESS":
 
                 try {
                     ChromeOptions chromeOptionsHeadless = new ChromeOptions();
@@ -62,7 +65,7 @@ public class DriverFactory {
                     chromeOptionsHeadless.addArguments("disable-gpu");
                     chromeOptionsHeadless.addArguments("window-size=1280x1024");
                     driver = new ChromeDriver(chromeOptionsHeadless);
-                    driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     log.info("Chrome Headless Driver selecionado");
                 } catch (Throwable e) {
                     log.info("ERRO: " + e.getMessage());
@@ -90,31 +93,29 @@ public class DriverFactory {
                     capabilitiesIE.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
                     capabilitiesIE.setCapability("ie.ensureCleanSession", true);
                     capabilitiesIE.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-                    capabilitiesIE.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
                     capabilitiesIE.setCapability(InternetExplorerDriver.FORCE_CREATE_PROCESS, true);
                     log.info("Internet Explorer Driver selecionado");
 
                 } catch (Throwable e) {
                     log.info("ERRO: " + e.getMessage());
                 }
-                ;
+
 
             case "DRIVER_PHANTOM":
 
                 try {
                     DesiredCapabilities caps = new DesiredCapabilities();
-                    caps.setJavascriptEnabled(true);
                     caps.setCapability("takesScreenshot", true);
                     caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
                             "./resources/phantomjs.exe");
-                    ArrayList<String> phantomJsPlusCapabilities = new ArrayList();
+                    ArrayList<String> phantomJsPlusCapabilities = new ArrayList<>();
                     phantomJsPlusCapabilities.add("--web-security=false");
                     phantomJsPlusCapabilities.add("--ssl-protocol=any");
                     phantomJsPlusCapabilities.add("--ignore-ssl-errors=true");
                     phantomJsPlusCapabilities.add("--webdriver-loglevel=NONE");
                     caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, phantomJsPlusCapabilities);
                     driver = new PhantomJSDriver(caps);
-                    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                     log.info("PhantomJS Driver selecionado");
 
                 } catch (Throwable e) {
@@ -130,7 +131,7 @@ public class DriverFactory {
     /**
      * Definir navegador setup ou Property
      */
-    private static String setNavegador() {
+    public static String setBrowser() {
 
         if (System.getProperty("Browser") != null) {
             return System.getProperty("Browser");

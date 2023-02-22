@@ -53,4 +53,8 @@ Não excutar alguma Tag
 ```bash
 mvn -DexcludedGroups="slow"
 ```
+Selecionar Browser 
+```bash
+mvn test  -Dgroups="add-cliente",-DBrowser=HEADLESS
+```
 

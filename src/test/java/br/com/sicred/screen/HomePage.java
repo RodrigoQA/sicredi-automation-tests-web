@@ -31,9 +31,6 @@ public class HomePage {
     @FindBy (name = "customerName")
     public WebElement inputName;
 
-    @FindBy (xpath = "(//a[contains(.,'Edit')])[2]")
-    public WebElement btnEdit;
-
     @FindBy (xpath = "//input[@class='select-row']")
     public WebElement checkboxClienteSelecionado;
 

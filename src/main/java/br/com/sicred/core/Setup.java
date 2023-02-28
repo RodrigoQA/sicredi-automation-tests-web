@@ -18,7 +18,7 @@ public class Setup extends TearDown {
      */
     @BeforeAll
     public static void inicializarBrowser() {
-        openBrowser(Navegadores.CHROME,"https://www.grocerycrud.com/v1.x/demo/bootstrap_theme");
+        openBrowser(Navegadores.HEADLESS,"https://www.grocerycrud.com/v1.x/demo/bootstrap_theme");
 
 
     }

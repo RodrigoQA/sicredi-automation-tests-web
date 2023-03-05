@@ -1,7 +1,12 @@
-package br.com.sicred.utils;
+package br.com.sicred.utils.Relatorio;
 
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
+
+import java.io.ByteArrayInputStream;
+
+import static br.com.sicred.core.DriverFactory.getDriver;
 import static br.com.sicred.utils.Relatorio.EvidenceReport.*;
 import static org.apache.commons.lang3.StringUtils.substringBetween;
 
@@ -47,7 +52,8 @@ public class TearDown implements TestWatcher {
                detalheErro = throwable.getClass().getSimpleName();
                 break;
         }
-       gerarRelatorio("WARNING","Ops! ocorreu uma falha no seu teste ;( ");
+        gerarRelatorio("WARNING","Ops! ocorreu uma falha no seu teste ;( ");
+        Allure.addAttachment(detalheErro, new ByteArrayInputStream(capture()));
 
     }
 

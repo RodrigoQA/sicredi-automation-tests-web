@@ -1,10 +1,12 @@
 package br.com.sicred.core;
 
 import br.com.sicred.utils.Enums.Navegadores;
-import br.com.sicred.utils.TearDown;
+import br.com.sicred.utils.Relatorio.TearDown;
+import com.google.common.collect.ImmutableMap;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import static br.com.sicred.core.DriverFactory.*;
+import static br.com.sicred.utils.Relatorio.AllureEnvironmentWriter.allureEnvironmentWriter;
 import static br.com.sicred.utils.Relatorio.EvidenceReport.*;
 
 
@@ -36,9 +38,22 @@ public class Setup extends TearDown {
 
    @AfterAll
     public static void fecharBrowser() {
-
-     killDriver();
+        setAllureEnvironment();
+        killDriver();
 
     }
+
+    public static void setAllureEnvironment() {
+        allureEnvironmentWriter(
+                ImmutableMap.<String, String>builder()
+                        .put("Browser", setBrowser())
+                        .put("API.Version", "1.0")
+                        .put("Ambiente ", "Homologação")
+                        .put("Responsavel ", "Equipe de Automação")
+                        .build());
+
+
+    }
+
 
 }

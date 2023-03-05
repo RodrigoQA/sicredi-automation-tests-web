@@ -44,9 +44,15 @@ public class EvidenceReport {
         TakesScreenshot newScreen = (TakesScreenshot) driver;
         String scnShot = newScreen.getScreenshotAs(OutputType.BASE64);
         return "data:image/jpg;base64, " + scnShot;
+
     }
 
+    public static byte[] capture() {
+        TakesScreenshot newScreen = (TakesScreenshot) getDriver();
+        return newScreen.getScreenshotAs(OutputType.BYTES);
 
+
+    }
     public static void gerarRelatorio(String titulo, String acao) {
 
         File rootsPath = new File(path + "/Evidencias/relatorio/" + dataAtual);
@@ -59,7 +65,7 @@ public class EvidenceReport {
             imagem = capture(getDriver());
 
             if (novoCenario) {
-                PrintWriter writer = new PrintWriter(fileReport, StandardCharsets.UTF_8);
+                PrintWriter writer = new PrintWriter(fileReport, String.valueOf(StandardCharsets.UTF_8));
                 writer.println("<html>");
                 writer.println("<head> <link rel='shortcut icon' href='imagens/iconAndroid.png' />  <link rel='icon' href='imagens/iconAndroid.png' type='image/x-icon' />  <title>" + TITULO + "</title>");
                 writer.println("<meta http-equiv=\"Content-Type\"content=\"text/html;charset=utf-8\">");
@@ -163,7 +169,7 @@ public class EvidenceReport {
                 novoCenario = false;
             } else {
 
-                PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileReport, StandardCharsets.UTF_8, true)));
+                PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileReport,  true)));
                 writer.println("</p>");
                 writer.println("<meta http-equiv=\"Content-Type\"content=\"text/html;charset=utf-8\">");
                 writer.println("<table class='evidencia' >");
@@ -213,7 +219,7 @@ public class EvidenceReport {
             }
             if (passo > 1) {
                 PrintWriter writer = new PrintWriter(
-                        new BufferedWriter(new FileWriter(fileReport, StandardCharsets.UTF_8, true)));
+                        new BufferedWriter(new FileWriter(fileReport, true)));
                 writer.println("</BODY>");
                 writer.println("</HTML>");
                 writer.close();

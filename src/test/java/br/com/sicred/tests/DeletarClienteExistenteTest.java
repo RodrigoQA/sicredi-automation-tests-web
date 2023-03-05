@@ -3,8 +3,10 @@ package br.com.sicred.tests;
 
 import br.com.sicred.action.FormularioAction;
 import br.com.sicred.core.Setup;
-import br.com.sicred.utils.TearDown;
-import org.junit.jupiter.api.DisplayName;
+import br.com.sicred.utils.Relatorio.TearDown;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
@@ -17,7 +19,8 @@ public class DeletarClienteExistenteTest extends Setup {
 
     @Test
     @Tags(value = {@Tag("excluir-cliente"),@Tag("regressivo")})
-    @DisplayName("Realizar a exclusão de um cliente já Cadastrado na plataforma")
+    @Description("Realizar a exclusão de um cliente já Cadastrado na plataforma")
+    @Severity(SeverityLevel.CRITICAL)
     public void exclusaoDeClienteNaBaseDeDados(){
 
         new AdicionarNovoClienteTest()

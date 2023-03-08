@@ -1,9 +1,9 @@
 package br.com.sicred.tests;
 
+import br.com.qa.utils.reports.ReportFail;
 import br.com.sicred.action.FormularioAction;
 import br.com.sicred.action.HomeAction;
 import br.com.sicred.core.Setup;
-import br.com.sicred.utils.Relatorio.TearDown;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.Story;
@@ -11,10 +11,9 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
 import static io.qameta.allure.SeverityLevel.*;
 
-@ExtendWith(TearDown.class)
+@ExtendWith(ReportFail.class)
 public class AdicionarNovoClienteTest extends Setup {
 
     @Test

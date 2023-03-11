@@ -45,7 +45,7 @@ public class FormularioPage {
     @FindBy (id = "field-country")
     public WebElement fieldPais;
 
-    @FindBy (xpath = "//a[contains(.,'Select from Employeer')]")
+    @FindBy (id = "field_salesRepEmployeeNumber_chosen")
     public WebElement comboEmpregadora;
 
     @FindBy (xpath = "//li[contains(.,'Fixter')]")

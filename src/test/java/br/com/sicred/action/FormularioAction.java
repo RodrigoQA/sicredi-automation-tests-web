@@ -2,11 +2,10 @@ package br.com.sicred.action;
 
 import br.com.sicred.core.BasePage;
 import br.com.sicred.screen.FormularioPage;
-import static br.com.sicred.core.BasePage.esperarElementAparecerTela;
-import static br.com.sicred.core.BasePage.validarSeTextoContainsString;
-import static br.com.sicred.core.DriverFactory.getDriver;
-import static br.com.sicred.utils.Relatorio.EvidenceReport.gerarRelatorio;
 
+import static br.com.qa.utils.reports.EvidenceReport.gerarRelatorio;
+import static br.com.qautils.managedriver.DriverFactory.getDriver;
+import static br.com.sicred.core.BasePage.*;
 
 
 public class FormularioAction extends FormularioPage {
@@ -27,7 +26,9 @@ public class FormularioAction extends FormularioPage {
         BasePage.escrever(fieldEstado,"RS");
         BasePage.escrever(fieldCep,"91000-000");
         BasePage.escrever(fieldPais,"Brasil");
+        descerAteElementoNaTela(comboEmpregadora);
         BasePage.clicar(comboEmpregadora);
+        esperarElementoASerClicado(fixter,5);
         BasePage.clicar(fixter);
         BasePage.escrever(filedLimiteCredito,"200");
         gerarRelatorio("Preencher Formulário","Preencher formulário com as informações do cliente");
@@ -37,7 +38,7 @@ public class FormularioAction extends FormularioPage {
 
     }
         public void validarMensagemDeDadosSalvosComSucesso(String mensagemEsperada){
-        esperarElementAparecerTela(cadastradoComSucesso,10);
+        esperarElementAparecerTela(cadastradoComSucesso,15);
             gerarRelatorio("Cliente cadastrado","Validar mensagem cliente cadastrado com sucesso");
             validarSeTextoContainsString(msgSaveComSucesso,mensagemEsperada);
         }

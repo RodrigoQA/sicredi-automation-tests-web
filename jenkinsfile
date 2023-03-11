@@ -3,7 +3,7 @@ pipeline {
      stages{
         stage('Run tests interface') {
             steps{
-                    git credentialsId:'gitlab_login' ,url:'https://gitlab.com/rodrigo.qa/sicred-automation-tests-web'
+                    git credentialsId:'github_login' ,url:'https://gitlab.com/rodrigo.qa/sicred-automation-tests-web'
                     bat 'mvn test -Dgroups="add-cliente,excluir-cliente"'
                 }
             }

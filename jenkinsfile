@@ -10,7 +10,7 @@ pipeline {
                     git credentialsId:'gitlab_login' ,url:'https://github.com/RodrigoQA/sicredi-automation-tests-web'
                     sh 'mvn test -Dgroups="add-cliente,excluir-cliente"'
                 }
-            }
+            
             
    
       post {
@@ -28,3 +28,4 @@ pipeline {
 
          }
     }
+}

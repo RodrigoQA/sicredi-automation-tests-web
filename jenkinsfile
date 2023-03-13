@@ -4,7 +4,7 @@ pipeline {
         stage('Run tests interface') {
             steps{
                     git credentialsId:'github_login' ,url:'https://github.com/RodrigoQA/sicredi-automation-tests-web'
-                    bat 'mvn test -Dgroups="add-cliente,excluir-cliente"'
+                    sh 'mvn test -Dgroups="regressivo"'
                 }
             }
 

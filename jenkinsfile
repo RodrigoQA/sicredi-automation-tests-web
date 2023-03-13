@@ -1,12 +1,31 @@
 pipeline {
      agent any
+         tools {
+            maven 'maven'
+        }
      stages{
+     
         stage('Run tests interface') {
             steps{
-                    git credentialsId:'gitlab_login' ,url:'https://gitlab.com/rodrigo.qa/sicred-automation-tests-web'
-                    bat 'mvn test -Dgroups="add-cliente,excluir-cliente"
+                    git credentialsId:'gitlab_login' ,url:'https://github.com/RodrigoQA/sicredi-automation-tests-web'
+                    sh 'mvn test -Dgroups="add-cliente,excluir-cliente",-DBrowser=HEADLESS'
                 }
-            }
+            
+            
+   
+      post {
+                             // If Maven was able to run the tests, even if some of the test
+                             // failed, record the test results and archive the jar file.
+                             success { allure([
+                                 includeProperties: false,
+                                 jdk: '11',
+                                 properties: [],
+                                 reportBuildPolicy: 'ALWAYS',
+                                 results: [[path: 'allure-results']]
+                             ])
+                         }
+                    }  
 
          }
     }
+}

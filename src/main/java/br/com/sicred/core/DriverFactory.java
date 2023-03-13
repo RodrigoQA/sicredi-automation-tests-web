@@ -49,6 +49,7 @@ public class DriverFactory {
                 try {
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("--remote-allow-origins=*");
                     chromeOptions.addArguments("--start-maximized");
                     driver = new ChromeDriver(chromeOptions);
                     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -61,6 +62,7 @@ public class DriverFactory {
 
                 try {
                     ChromeOptions chromeOptionsHeadless = new ChromeOptions();
+                    chromeOptionsHeadless.addArguments("--remote-allow-origins=*");
                     chromeOptionsHeadless.addArguments("--headless");
                     chromeOptionsHeadless.addArguments("disable-gpu");
                     chromeOptionsHeadless.addArguments("window-size=1280x1024");

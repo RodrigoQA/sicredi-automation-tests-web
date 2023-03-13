@@ -1,15 +1,13 @@
 package br.com.sicred.core;
 
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.logging.Logger;
 import static br.com.sicred.core.DriverFactory.getDriver;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -50,6 +48,14 @@ public class BasePage {
         log.info("Texto: "+texto_esperado+" validado com sucesso!");
 
     }
+
+    public static void descerAteElementoNaTela(WebElement elemento){
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", elemento);
+         esperarElementAparecerTela(elemento,5);
+        log.info("Scroll: Scroll efetuado até o elemento com sucesso!");
+
+    }
+
 
 
 

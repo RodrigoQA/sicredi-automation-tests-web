@@ -1,5 +1,6 @@
 package br.com.sicred.tests;
 
+
 import br.com.sicred.action.FormularioAction;
 import br.com.sicred.action.HomeAction;
 import br.com.sicred.core.Setup;

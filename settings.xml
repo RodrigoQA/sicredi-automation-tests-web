@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">
+
+  <localRepository>${user.home}/.m2/repository</localRepository>
+  <interactiveMode>true</interactiveMode>
+  <offline>false</offline>
+  <activeProfiles>
+    <activeProfile>github</activeProfile>
+  </activeProfiles>
+
+  <profiles>
+    <profile>
+      <id>github</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
+          <id>610890888</id>
+         <url>https://maven.pkg.github.com/RodrigoQA/manager-driver-factory</url>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+
+        <repository>
+          <id>central-2</id>
+          <url>https://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
+          <id>610932640</id>
+          <url>https://maven.pkg.github.com/RodrigoQA/custom-web-report</url>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+  <servers>
+    <server>
+      <id>610890888</id>
+      <username>RodrigoQA</username>
+      <password>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</password>
+      <privateKey>${user.home}/.ssh/id_dsa</privateKey>
+      <filePermissions>664</filePermissions>
+      <directoryPermissions>775</directoryPermissions>
+      <configuration></configuration>
+    </server>
+
+    <server>
+      <id>610932640</id>
+      <username>RodrigoQA</username>
+      <password>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</password>
+      <privateKey>${user.home}/.ssh/id_dsa</privateKey>
+      <filePermissions>664</filePermissions>
+      <directoryPermissions>775</directoryPermissions>
+      <configuration></configuration>
+    </server>
+  </servers>
+
+</settings>

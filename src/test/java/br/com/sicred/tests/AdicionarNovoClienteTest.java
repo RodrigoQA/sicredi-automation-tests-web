@@ -30,7 +30,7 @@ public class AdicionarNovoClienteTest extends Setup {
 
         new FormularioAction()
                  .preencherInformacoesDoClienteNoFormulario()
-                        .validarMensagemDeDadosSalvosComSucesso("test-Your data has been successfully stored into the database.");
+                        .validarMensagemDeDadosSalvosComSucesso("Your data has been successfully stored into the database.");
 
 
     }

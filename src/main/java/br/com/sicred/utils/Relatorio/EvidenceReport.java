@@ -19,7 +19,9 @@ public class EvidenceReport {
     public static String fileReport;
     public static String imagem;
     public static String elemento;
-    public static String nomeTest;
+    public static String story;
+    public static String epic;
+    public static String severity;
     public static Boolean novoCenario;
     public static String nomeCenario;
     public static String tipoErro;
@@ -27,6 +29,7 @@ public class EvidenceReport {
     public static int passo = 1;
     public static String status = "PASSED";
     public static final String responsavel = "Equipe de Automação";
+    public static final String ambiente = "HOMOLOGACAO";
     public static String path = System.getProperty("user.dir");
     public static final String TITULO = "Relátorio de Automação de Testes - Web";
     private static final LocalDate date = LocalDate.now();
@@ -59,7 +62,7 @@ public class EvidenceReport {
       if (!rootsPath.exists())
             rootsPath.mkdirs();
 
-        fileReport = rootsPath + "/" + nomeTest + ".html";
+        fileReport = rootsPath + "/" + story + ".html";
 
         try {
             imagem = capture(getDriver());
@@ -106,6 +109,7 @@ public class EvidenceReport {
                 writer.println("</p>");
                 writer.println("<center><h5>Cenário: <font color='#00AA00'>" + nomeCenario + "</font><center><br>"); //Nova Linha
 
+
                 // INICIO BLOCO CUSTOMIZAÇÃO PARA AMBIENTE (06/02/2020)
                 writer.println("<table border=5 colspan=5 >");
                 writer.println("<tr class='evidencia'>");
@@ -115,12 +119,14 @@ public class EvidenceReport {
                 writer.println("<tr class='evidencia'>");
                 writer.println("<td class='evidencia' colspan=3 > SISTEMA OPERACIONAL: </td><td class='evidencia' >" + System.getProperty("os.name") + "</td></tr><tr>");
                 writer.println("<tr class='evidencia'>");
-                writer.println("<td class='evidencia' colspan=3 > AMBIENTE: </td><td class='evidencia' >HOMOLOGAÇÃO</td></tr><tr>");
+                writer.println("<td class='evidencia' colspan=3 > AMBIENTE: </td><td class='evidencia' >"+ambiente+"</td></tr><tr>");
                 writer.println("<tr class='evidencia'>");
-                writer.println("<td class='evidencia' colspan=3 > VERSÃO EM TEST: </td><td class='evidencia' >EM TEST</td></tr><tr>");
+                writer.println("<td class='evidencia' colspan=3 > EPICO: </td><td class='evidencia' >"+epic+"</td></tr><tr>");
                 writer.println("<tr class='evidencia'>");
-                writer.println("<td class='evidencia' colspan=3 > VERSÃO APLICATIVO: </td>");
-                writer.println("<td class='evidencia' colspan=3 >EM TEST</td></tr><tr></table></p>");
+                writer.println("<td class='evidencia' colspan=3 > STORY: </td><td class='evidencia' >"+story+"</td></tr><tr>");
+                writer.println("<tr class='evidencia'>");
+                writer.println("<td class='evidencia' colspan=3 > SEVERITY: </td>");
+                writer.println("<td class='evidencia' colspan=3 >"+severity+"</td></tr><tr></table></p>");
                 // FIM BLOCO CUSTOMIZAÇÃO PARA AMBIENTE
 
 
@@ -161,7 +167,7 @@ public class EvidenceReport {
                 writer.println("</tr>");
                 writer.println("<tr>");
                 writer.println("<td colspan=4 class='evidencia' ><img src='" + imagem
-                        + "' style='width:1460px;height:1080px;' /></td>");
+                        + "' style= 'max-width: 100%;'width:1460px;height:1080px;' /></td>");
                 writer.println("</tr>");
                 writer.println("</table>");
                 writer.println("</p>");
@@ -211,7 +217,7 @@ public class EvidenceReport {
                 writer.println("</tr>");
                 writer.println("<tr>");
                 writer.println("<td colspan=4 class='evidencia' ><img src='" + imagem
-                        + "' style='width:1460px;height:1080px;' /></td>");
+                        + "' style= 'max-width: 100%;'width:1460px;height:1080px;' /></td>");
                 writer.println("</tr>");
                 writer.println("</table>");
                 writer.println("</p>");

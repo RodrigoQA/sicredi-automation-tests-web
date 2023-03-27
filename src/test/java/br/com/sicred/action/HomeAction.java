@@ -3,8 +3,8 @@ package br.com.sicred.action;
 import br.com.sicred.core.BasePage;
 import br.com.sicred.screen.HomePage;
 import org.openqa.selenium.support.ui.Select;
-import static br.com.sicred.core.BasePage.clicar;
-import static br.com.sicred.core.BasePage.validarSeTextoEhExatamenteOMesmo;
+
+import static br.com.sicred.core.BasePage.*;
 import static br.com.sicred.core.DriverFactory.getDriver;
 import static br.com.sicred.utils.Relatorio.EvidenceReport.gerarRelatorio;
 import static org.hamcrest.CoreMatchers.is;
@@ -30,10 +30,10 @@ public class HomeAction extends HomePage {
     }
 
     public HomeAction selecionarClienteParaExcluir(String cliente) {
-       BasePage.esperarElementAparecerTela(paginaInicial,10);
-       BasePage.clicar(inputName);
-       BasePage.escrever(inputName,cliente);
-       BasePage.esperarElementAparecerTela(clienteTesteSicred,10);
+       esperarElementAparecerTela(paginaInicial,10);
+       clicar(inputName);
+       escreverTexto(inputName,cliente);
+       esperarElementAparecerTela(clienteTesteSicred,10);
        assertThat(clienteTesteSicred.getText(), is(cliente));
         gerarRelatorio("Selecionar Cliente","Selecionar cliente a ser excluido");
         return this;
@@ -71,7 +71,7 @@ public class HomeAction extends HomePage {
     }
 
     public void validarMensagemExcluidoComSucesso(String mensagemExcluidoComSucesso) {
-        BasePage.esperarElementAparecerTela(msgDeleted,10);
+        esperarElementAparecerTela(msgDeleted,10);
         assertThat(msgDeleted.getText(), is(mensagemExcluidoComSucesso));
         gerarRelatorio("Deletado com sucesso","Validar mensagem deletado com sucesso");
     }

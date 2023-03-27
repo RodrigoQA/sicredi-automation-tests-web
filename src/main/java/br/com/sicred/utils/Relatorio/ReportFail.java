@@ -6,12 +6,11 @@ import org.junit.jupiter.api.extension.TestWatcher;
 
 import java.io.ByteArrayInputStream;
 
-import static br.com.sicred.core.DriverFactory.getDriver;
 import static br.com.sicred.utils.Relatorio.EvidenceReport.*;
 import static org.apache.commons.lang3.StringUtils.substringBetween;
 
 
-public class TearDown implements TestWatcher {
+public class ReportFail implements TestWatcher {
 
     @Override
     public void testAborted(ExtensionContext extensionContext, Throwable throwable) {

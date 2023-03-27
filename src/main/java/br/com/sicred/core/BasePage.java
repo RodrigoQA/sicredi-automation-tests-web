@@ -12,7 +12,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class BasePage {
+abstract public class BasePage {
     public static Logger log = Logger.getLogger("QALogger");
 
     public static void esperarElementAparecerTela(WebElement element,int segundos){
@@ -25,7 +25,7 @@ public class BasePage {
         log.info("Elemento: "+element+ " encontrado com sucesso!");
     }
 
-    public static void escrever(WebElement el, String text){
+    public static void escreverTexto(WebElement el, String text){
         el.sendKeys(text);
         log.info("texto: "+text+ " foi preenchido com sucesso!");
 
@@ -37,7 +37,7 @@ public class BasePage {
 
     }
 
-   public static void validarSeTextoContainsString(WebElement texto_atual, String texto_esperado){
+   public static void validarSeContemTexto(WebElement texto_atual, String texto_esperado){
        assertThat(texto_atual.getText(), containsString(texto_esperado));
         log.info("Texto: "+texto_esperado+" validado com sucesso!");
 

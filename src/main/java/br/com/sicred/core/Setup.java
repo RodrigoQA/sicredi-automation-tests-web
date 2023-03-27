@@ -1,18 +1,24 @@
 package br.com.sicred.core;
 
 import br.com.sicred.utils.Enums.Navegadores;
-import br.com.sicred.utils.Relatorio.TearDown;
+import br.com.sicred.utils.Relatorio.*;
+import br.com.sicred.utils.Relatorio.ReportFail;
 import com.google.common.collect.ImmutableMap;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
+import java.lang.reflect.Method;
 import static br.com.sicred.core.DriverFactory.*;
 import static br.com.sicred.utils.Relatorio.AllureEnvironmentWriter.allureEnvironmentWriter;
 import static br.com.sicred.utils.Relatorio.EvidenceReport.*;
 
 
 
-@ExtendWith(TearDown.class)
-public class Setup extends TearDown {
+@ExtendWith(ReportFail.class)
+public class Setup {
     /**
      *  Ex: Run Handless
      openBrowser(Navegadores.HEADLESS,"https://www.grocerycrud.com/v1.x/demo/bootstrap_theme");
@@ -30,9 +36,17 @@ public class Setup extends TearDown {
 
     @BeforeEach
     public void setupScenario(TestInfo testInfo) {
-        novoCenario = true;
-        nomeTest = testInfo.getTestMethod().get().getName();
-        nomeCenario = testInfo.getDisplayName();
+        Method[] methods = getClass().getMethods();
+        Method method = methods[0];
+        Description description = method.getAnnotation(Description.class);
+        Story story = method.getAnnotation(Story.class);
+        Epic epic = method.getAnnotation(Epic.class);
+        Severity severity = method.getAnnotation(Severity.class);
+        EvidenceReport.nomeCenario =  description.value();
+        EvidenceReport.story = story.value();
+        EvidenceReport.epic = epic.value();
+        EvidenceReport.severity = String.valueOf(severity.value());
+        EvidenceReport.novoCenario = true;
 
 
     }

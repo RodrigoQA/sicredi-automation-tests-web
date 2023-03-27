@@ -1,9 +1,8 @@
 package br.com.sicred.action;
 
-import br.com.sicred.core.BasePage;
+
 import br.com.sicred.screen.FormularioPage;
-import static br.com.sicred.core.BasePage.esperarElementAparecerTela;
-import static br.com.sicred.core.BasePage.validarSeTextoContainsString;
+import static br.com.sicred.core.BasePage.*;
 import static br.com.sicred.core.DriverFactory.getDriver;
 import static br.com.sicred.utils.Relatorio.EvidenceReport.gerarRelatorio;
 
@@ -17,21 +16,21 @@ public class FormularioAction extends FormularioPage {
     }
 
     public FormularioAction preencherInformacoesDoClienteNoFormulario(){
-        BasePage.escrever(fieldNome,"Teste Sicredi");
-        BasePage.escrever(fieldUltimoNome,"Teste");
-        BasePage.escrever(fieldContPrimeiroNome,"Rodrigo");
-        BasePage.escrever(fieldTelefone,"51 9999-9999");
-        BasePage.escrever(fieldEndereco1,"Av Assis Brasil, 3970");
-        BasePage.escrever(fieldEndereco2," Torre D");
-        BasePage.escrever(fieldCidade,"Porto Alegre");
-        BasePage.escrever(fieldEstado,"RS");
-        BasePage.escrever(fieldCep,"91000-000");
-        BasePage.escrever(fieldPais,"Brasil");
-        BasePage.clicar(comboEmpregadora);
-        BasePage.clicar(fixter);
-        BasePage.escrever(filedLimiteCredito,"200");
+        escreverTexto(fieldNome,"Teste Sicredi");
+        escreverTexto(fieldUltimoNome,"Teste");
+        escreverTexto(fieldContPrimeiroNome,"Rodrigo");
+        escreverTexto(fieldTelefone,"51 9999-9999");
+        escreverTexto(fieldEndereco1,"Av Assis Brasil, 3970");
+        escreverTexto(fieldEndereco2," Torre D");
+        escreverTexto(fieldCidade,"Porto Alegre");
+        escreverTexto(fieldEstado,"RS");
+        escreverTexto(fieldCep,"91000-000");
+        escreverTexto(fieldPais,"Brasil");
+        clicar(comboEmpregadora);
+        clicar(fixter);
+        escreverTexto(filedLimiteCredito,"200");
         gerarRelatorio("Preencher Formulário","Preencher formulário com as informações do cliente");
-        BasePage.clicar(btnSave);
+        clicar(btnSave);
 
         return this;
 
@@ -39,10 +38,10 @@ public class FormularioAction extends FormularioPage {
         public void validarMensagemDeDadosSalvosComSucesso(String mensagemEsperada){
         esperarElementAparecerTela(cadastradoComSucesso,10);
             gerarRelatorio("Cliente cadastrado","Validar mensagem cliente cadastrado com sucesso");
-            validarSeTextoContainsString(msgSaveComSucesso,mensagemEsperada);
+            validarSeContemTexto(msgSaveComSucesso,mensagemEsperada);
         }
     public HomeAction voltarPaginaPrincipal(){
-         BasePage.clicar(btnBackPage);
+         clicar(btnBackPage);
          return new HomeAction();
     }
 }

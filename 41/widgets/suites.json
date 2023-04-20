@@ -1,1 +1,0 @@
-{"total":2,"items":[{"uid":"9b381b7dab4b7c0febf1ab6472498f11","name":"br.com.sicred.tests.AdicionarNovoClienteTest","statistic":{"failed":1,"broken":0,"skipped":0,"passed":0,"unknown":0,"total":1}},{"uid":"59185c81d6d84699062ba1dd8e1dfdf2","name":"br.com.sicred.tests.DeletarClienteExistenteTest","statistic":{"failed":1,"broken":0,"skipped":0,"passed":0,"unknown":0,"total":1}}]}

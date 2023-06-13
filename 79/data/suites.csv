@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue May 16 09:12:13 GMT 2023","Tue May 16 09:12:18 GMT 2023","4893","","br.com.sicred.tests.AdicionarNovoClienteTest","","br.com.sicred.tests.AdicionarNovoClienteTest","incluirNovoClienteNaBaseDeDados","incluirNovoClienteNaBaseDeDados()","Realizar a inclusão do cliente atraves do preenchimento do formulario"
-"passed","Tue May 16 09:12:20 GMT 2023","Tue May 16 09:12:37 GMT 2023","16701","","br.com.sicred.tests.DeletarClienteExistenteTest","","br.com.sicred.tests.DeletarClienteExistenteTest","exclusaoDeClienteNaBaseDeDados","exclusaoDeClienteNaBaseDeDados()","Realizar a exclusão de um cliente já Cadastrado na plataforma"

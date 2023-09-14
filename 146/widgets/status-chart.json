@@ -1,1 +1,0 @@
-[{"uid":"77983dbad789c1ec","name":"exclusaoDeClienteNaBaseDeDados()","time":{"start":1692263501091,"stop":1692263518249,"duration":17158},"status":"passed","severity":"normal"},{"uid":"868e4d5280b0b24e","name":"incluirNovoClienteNaBaseDeDados()","time":{"start":1692263494352,"stop":1692263499341,"duration":4989},"status":"passed","severity":"critical"}]
